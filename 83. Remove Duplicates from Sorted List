@@ -11,13 +11,43 @@
 // Solution 1
 class Solution {
 public:
-    ListNode* deleteDuplicates(ListNode* head) {
-        if head->next->val == head->val
-            head->next = head->next->next;
-        
-        }
-    
-private:
-  ListNode *head;
-
+    ListNode* deleteDuplicates(ListNode* head) { 
+        ListNode* p=head;
+        if(p==NULL) 
+           return NULL;
+        while(p->next!=NULL){
+           if(p->next->val == p->val)
+             p->next = p->next->next;
+           p=p->next;
+           }
+        return head;
 };
+
+//Solution2: Using vector
+class Solution {
+public:
+int removeDuplicates(vector<int>& nums) {
+if (nums.empty()) return 0;
+int index = 0;
+for (int i = 1; i < nums.size(); i++) {
+if (nums[index] != nums[i])
+nums[++index] = nums[i];
+}
+return index + 1;
+}
+};
+/* nums.empty();
+ nums.size()
+ nums[index] index starts from 0*/
+ 
+ //Solution3:
+ class Solution{
+ public:
+ int removeDuplicates(vector<int>& nums){
+ return distance(nums.begin(),unique(nums.begin(),nums.end()));
+ }
+ }
+ 
+ 
+ 
+ 
